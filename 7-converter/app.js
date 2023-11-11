@@ -27,8 +27,6 @@ function converter (sum, currentCurrency, futureCurrency) {
 			case (currentCurrency === 'руб' && futureCurrency === '$'): 
 			return sum * 92;
 		}
-
-	} else {
 		return null
 	}
 };
