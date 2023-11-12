@@ -2,12 +2,15 @@ console.log('DZ-4');
 //Домашнее задание - Функции
 
 function converter (sum, currentCurrency, futureCurrency) {
+	if (!(sum && currentCurrency && futureCurrency)){
+		return null
+	}
+	
 	let usdRub = 92;
 	let usdEuro = 0.93;
 	let euroUsd = 1.07;
 	let euroRub = 98;
 
-	if (sum && currentCurrency && futureCurrency) {
 		switch (true) {
 			case (currentCurrency === '$' && futureCurrency === 'руб'): 
 			return sum * 92;
@@ -27,8 +30,6 @@ function converter (sum, currentCurrency, futureCurrency) {
 			case (currentCurrency === 'руб' && futureCurrency === '$'): 
 			return sum * 92;
 		}
-		return null
-	}
 };
 
 console.log(converter(100, 'euro', '$'));
