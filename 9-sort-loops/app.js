@@ -9,7 +9,7 @@ function sortArray (arr) {
 	let rez = arr;
 
 	for (let i = 0; i < rez.length; i++) {
-    for (let j = 0; j < rez.length - 1; j++) { // Исправлено условие для переменной j
+    for (let j = 0; j < rez.length - 1; j++) { 
       if (rez[j] > rez[j + 1]) {
         let temp = rez[j];
         rez[j] = rez[j + 1];
