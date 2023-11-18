@@ -17,12 +17,10 @@ console.log('DZ-9');
 function checkLuhn (str){
 	str = str.replace(/ /g, '');
 	let sum = 0;
-	const parity = (str.length) % 2;
-	//чтобы определить, начинать ли с удвоение цифр с первой или второй цифры.
 
 	for (let i = 0; i < str.length; i++){
-	let digit = +str[i];
-	if (i % 2 === parity){
+	let digit = Number(str[i]);
+	if (i % 2 === 0){
 		digit = digit * 2;
 	} else if (digit > 9) {
         digit = digit - 9;
