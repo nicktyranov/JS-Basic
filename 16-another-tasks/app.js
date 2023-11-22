@@ -1,6 +1,7 @@
-console.log('DZ-11');
+console.log('DZ-12');
 
-//Домашнее задание - Scope и this
+//Домашнее задание - Управление this
+// примените все методы toDoList на newTask
 // dz
 /*
 Написать объект toDoList, который хранит в себе задачи {'title': 'Помыть посуду', id: 1, priority: 1} и имеет методы:
@@ -9,9 +10,8 @@ console.log('DZ-11');
 - обновить ИМЯ или ПРИОРИТЕТ по АЙДИ
 - отсортировать задачи по ПРИОРИТЕТу
 
-15-task-object
-*/
 
+*/
 let toDoList = {
 	tasks: [],
 
@@ -34,23 +34,6 @@ let toDoList = {
             console.log(`Задача с ID ${id} не найдена`);
         }
 	},
-
-	// updateTask: function (id, title, priority) {
-	// 	let taskPosition = this.tasks.findIndex(task => task.id == id)
-	// 	if (taskPosition !== -1) {
-
-	// 	let oldTitle = this.tasks[taskPosition].title;
-	// 	let oldPriority = this.tasks[taskPosition].priority;
-		
-    // 	this.tasks.splice(taskPosition, 1);
-    //     this.addTask(title || oldTitle, id, priority||oldPriority);
-	// 	console.log(`Задача с ID ${id} обновлена`);
-
-    //     } else {
-    //         console.log(`Задача с ID ${id} не найдена`);
-    //     }
-	// },
-
 	updateTask: function (id, newTitle, newPriority) {
         let task = this.tasks.find(task => task.id == id);
 
@@ -89,3 +72,38 @@ toDoList.addTask('Eat', 1, 5);
 toDoList.addTask('Sleep', 1, 3);
 toDoList.sortTask();
 console.log(toDoList);
+
+
+// примените все методы toDoList на newTask
+const newTask = {
+	tasks: [{
+		id: 3,
+		title: 'test', 
+		decription: 'decription of title',
+		priority: 1,
+	}],
+}
+console.log(newTask);
+
+const newTaskAdd = toDoList.addTask.bind(newTask);
+newTaskAdd('посуду Помыть', 1, 1);
+newTaskAdd('посуду Помыть', 1, 2);
+newTaskAdd('посуду Помыть', 2, 4);
+newTaskAdd('посуду Помыть', 3, 5);
+newTaskAdd('посуду Помыть', 0, 3);
+console.log(newTask);
+
+const newTaskDelete = toDoList.deleteTask.bind(newTask);
+newTaskDelete(1);
+newTaskDelete(3);
+console.log(newTask);
+
+
+newTask.updateTask = toDoList.updateTask;
+newTask.updateTask(1, 'xx', 1);
+console.log(newTask);
+
+const newTaskSort = toDoList.sortTask;
+newTaskSort.call(newTask);
+console.log(newTask);
+
